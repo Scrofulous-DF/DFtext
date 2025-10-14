@@ -1,6 +1,12 @@
 import nbtlib
 from nbtlib.tag import Compound, Int, String, List, Byte
 
+"""
+Editing players saved hotbars.
+
+puts a chest with code templates into one of the players slots
+"""
+
 booldict = {True:1, False:0}
 
 def textnbt(text : str, color : str, bold : bool, italic : bool):
@@ -81,3 +87,4 @@ class external_saving_system:
 
         with nbtlib.File.load(self.path, gzipped=False, byteorder="big") as file:
             file[str(self.bar)][self.slot] = self.chest
+
