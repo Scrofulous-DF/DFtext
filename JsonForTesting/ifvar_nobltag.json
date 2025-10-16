@@ -1,0 +1,250 @@
+{
+  "blocks": [
+    {
+      "id": "block",
+      "block": "func",
+      "args": {
+        "items": [
+          {
+            "item": {
+              "id": "hint",
+              "data": {
+                "id": "function"
+              }
+            },
+            "slot": 25
+          },
+          {
+            "item": {
+              "id": "bl_tag",
+              "data": {
+                "option": "False",
+                "tag": "Is Hidden",
+                "action": "dynamic",
+                "block": "func"
+              }
+            },
+            "slot": 26
+          }
+        ]
+      },
+      "data": ""
+    },
+    {
+      "id": "block",
+      "block": "if_var",
+      "args": {
+        "items": []
+      },
+      "action": "="
+    },
+    {
+      "id": "bracket",
+      "direct": "open",
+      "type": "norm"
+    },
+    {
+      "id": "block",
+      "block": "if_var",
+      "args": {
+        "items": []
+      },
+      "action": "!="
+    },
+    {
+      "id": "bracket",
+      "direct": "open",
+      "type": "norm"
+    },
+    {
+      "id": "block",
+      "block": "if_var",
+      "args": {
+        "items": []
+      },
+      "action": ">"
+    },
+    {
+      "id": "bracket",
+      "direct": "open",
+      "type": "norm"
+    },
+    {
+      "id": "block",
+      "block": "if_var",
+      "args": {
+        "items": []
+      },
+      "action": ">="
+    },
+    {
+      "id": "bracket",
+      "direct": "open",
+      "type": "norm"
+    },
+    {
+      "id": "block",
+      "block": "if_var",
+      "args": {
+        "items": []
+      },
+      "action": "<"
+    },
+    {
+      "id": "bracket",
+      "direct": "open",
+      "type": "norm"
+    },
+    {
+      "id": "block",
+      "block": "if_var",
+      "args": {
+        "items": []
+      },
+      "action": "<="
+    },
+    {
+      "id": "bracket",
+      "direct": "open",
+      "type": "norm"
+    },
+    {
+      "id": "block",
+      "block": "if_var",
+      "args": {
+        "items": []
+      },
+      "action": "VarExists"
+    },
+    {
+      "id": "bracket",
+      "direct": "open",
+      "type": "norm"
+    },
+    {
+      "id": "block",
+      "block": "if_var",
+      "args": {
+        "items": []
+      },
+      "action": "ValueIsEmpty"
+    },
+    {
+      "id": "bracket",
+      "direct": "open",
+      "type": "norm"
+    },
+    {
+      "id": "block",
+      "block": "if_var",
+      "args": {
+        "items": []
+      },
+      "action": "ItemIsBlock"
+    },
+    {
+      "id": "bracket",
+      "direct": "open",
+      "type": "norm"
+    },
+    {
+      "id": "block",
+      "block": "if_var",
+      "args": {
+        "items": []
+      },
+      "action": "BlockIsSolid"
+    },
+    {
+      "id": "bracket",
+      "direct": "open",
+      "type": "norm"
+    },
+    {
+      "id": "block",
+      "block": "if_var",
+      "args": {
+        "items": []
+      },
+      "action": "ItemHasTag"
+    },
+    {
+      "id": "bracket",
+      "direct": "open",
+      "type": "norm"
+    },
+    {
+      "id": "block",
+      "block": "if_var",
+      "args": {
+        "items": []
+      },
+      "action": "ItemHasEnchant"
+    },
+    {
+      "id": "bracket",
+      "direct": "open",
+      "type": "norm"
+    },
+    {
+      "id": "bracket",
+      "direct": "close",
+      "type": "norm"
+    },
+    {
+      "id": "bracket",
+      "direct": "close",
+      "type": "norm"
+    },
+    {
+      "id": "bracket",
+      "direct": "close",
+      "type": "norm"
+    },
+    {
+      "id": "bracket",
+      "direct": "close",
+      "type": "norm"
+    },
+    {
+      "id": "bracket",
+      "direct": "close",
+      "type": "norm"
+    },
+    {
+      "id": "bracket",
+      "direct": "close",
+      "type": "norm"
+    },
+    {
+      "id": "bracket",
+      "direct": "close",
+      "type": "norm"
+    },
+    {
+      "id": "bracket",
+      "direct": "close",
+      "type": "norm"
+    },
+    {
+      "id": "bracket",
+      "direct": "close",
+      "type": "norm"
+    },
+    {
+      "id": "bracket",
+      "direct": "close",
+      "type": "norm"
+    },
+    {
+      "id": "bracket",
+      "direct": "close",
+      "type": "norm"
+    },
+    {
+      "id": "bracket",
+      "direct": "close",
+      "type": "norm"
+    }
+  ]
+}

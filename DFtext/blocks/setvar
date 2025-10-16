@@ -1,7 +1,7 @@
-from ..main import block
+from ..main import Block, no_bltag_blockdatacreator
+from ..items import Item, Var, Number
 
 class SetVar(Block):
-
     def __init__(self) -> None:
         self.type = "set_var"
 
