@@ -16,6 +16,21 @@ def INIT(hotbarpath, bar, slot):
 def blockdatacreator(type : str, action : str, items : list[str] = []) -> dict[str, Any]:
     return {"id":"block", "block":type, "args":{"items":items}, "action":action}
 
+class Block:
+
+    def __init_subclass__(cls : Any) -> None:
+        super().__init_subclass__()
+        m.LENGTH += 2
+
+def no_bltag_blockdatacreator(type : str, action : str, items : tuple[Item, ...]):
+    itemdata = []
+    for index, item in enumerate(items):
+        itemdata.append(item.get_item_text(index))
+    
+    blockdata = blockdatacreator(type, action, itemdata)
+
+    DATA.append(blockdata)
+
 def packer(data : list[str]) -> str:
     return str({"blocks" : data})
 
@@ -37,7 +52,6 @@ def dataparser(data):
     DATA = []
     LENGTH = 0
 
-
-
 def QUIT():
+
     saving_system.save()
