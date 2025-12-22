@@ -1,0 +1,6 @@
+Event(Join) {
+    #comment#
+    __player__.giveitems(
+        Item(material="diamond_sword")
+    )
+}
