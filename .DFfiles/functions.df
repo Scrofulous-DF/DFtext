@@ -1,0 +1,36 @@
+def Setup() {
+    #do whatever#
+}
+
+def add(num num1, num num2) {
+    num newnum = num1 + num2;
+    return newnum;
+}
+
+def idea(num base, num change) {
+    num mult = num * change;
+    num div = num / change;
+    return mult, div;
+}
+
+Event(Join) {
+    num1, num2 = idea(3, 2);
+    num number = add(num1, num2);
+    print("Weird Number: " + number);
+}
+
+Event(Jump) {
+    list swords = [
+        Item(material = "wooden_sword"),
+        Item(material = "stone_sword"),
+        Item(material = "copper_sword"),
+        Item(material = "iron_sword"),
+        Item(material = "gold_sword"),
+        Item(material = "diamond_sword"),
+        Item(material = "netherite_sword")
+    ]
+
+    Select (Players >> IsHoldingItem(swords) >> IsSneaking) {
+        __player__.LaunchUp(__stat__.heldslot<Selected>)<Default>;
+    }
+}

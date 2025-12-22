@@ -1,0 +1,94 @@
+Event(Join) {}
+Event(Leave) {}
+Event(Command) {}
+Event(Chat) {}
+Event(LoadResource) {}
+Event(DeclineResource) {}
+Event(Purchase) {}
+
+Event(RightClick) {}
+Event(LeftClick) {}
+Event(RightClickEntity) {}
+Event(LeftClickEntity) {}
+Event(RightClickPlayer) {}
+Event(LeftClickPlayer) {}
+Event(PickBlock) {}
+Event(PickEntity) {}
+Event(LoadCrossbow) {}
+Event(PlaceBlock) {}
+Event(BreakBlock) {}
+Event(ItemBreaks) {}
+Event(ChangeSign) {}
+Event(TameMob) {}
+Event(Fish) {}
+Event(Consume) {}
+
+Event(Walk) {}
+Event(Move) {}
+Event(Jump) {}
+Event(Sneak) {}
+Event(Unsneak) {}
+Event(StartSprint) {}
+Event(StopSprint) {}
+Event(StartFly) {}
+Event(StopFly) {}
+Event(StartGlide) {}
+Event(StopGlide) {}
+Event(Riptide) {}
+Event(Dismount) {}
+Event(HorseJump) {}
+Event(VehicleJump) {}
+Event(MovementKeyChange) {}
+Event(Teleport) {}
+
+Event(ClickPlayerSlot) {}
+Event(ClickMenuSlot) {}
+Event(ClickContainerSlot) {}
+Event(CloseInv) {}
+Event(SwapHands) {}
+Event(ChangeSlot) {}
+Event(PickUpItem) {}
+Event(DropItem) {}
+
+Event(Hurt) {}
+Event(AttackPlayer) {}
+Event(AttackEntity) {}
+Event(HurtByEntity) {}
+Event(HurtByProjectile) {}
+Event(ShootBow) {}
+Event(ShootProjectile) {}
+Event(ProjectileHit) {}
+Event(Death) {}
+Event(Kill) {}
+Event(Resurrect) {}
+Event(Respawn) {}
+Event(KillMob) {}
+Event(KilledByMob) {}
+
+Event(Heal) {}
+Event(Exhaustion) {}
+Event(Combust) {}
+Event(PotionCloudImbuePlayer) {}
+
+
+#--entity events--#
+
+
+Event(EntityAttackEntity) {}
+Event(EntityKillEntity) {}
+Event(EntityHurt) {}
+Event(EntityHurtByProjectile) {}
+Event(EntityKilledByProjectile) {}
+Event(EntityDeath) {}
+Event(EntityExplode) {}
+Event(VehicleHurt) {}
+Event(FallingBlockFall) {}
+Event(FallingBlockLand) {}
+Event(EntityResurrect) {}
+Event(SheepRegrowWool) {}
+Event(ItemMerge) {}
+Event(EntityShootBow) {}
+Event(EntityHeal) {}
+Event(EntityTransform) {}
+Event(EntityTeleport) {}
+Event(EntityCombust) {}
