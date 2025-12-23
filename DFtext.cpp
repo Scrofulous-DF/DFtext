@@ -4,24 +4,28 @@
 #include <filesystem>
 
 using namespace std;
+namespace fs = filesystem;
 
-filesystem::path filecd = "C:/Users/Kyleb/OneDrive/Desktop/Personal_Projects/Github/DFtext/.DFfiles/test1.df";
+fs::path relativefilepath = "DFfiles/test1.df";
+
+void tokenizer(fstream file) {
+    
+}
 
 int main() {
     
-    if (filecd.extension() != ".df") {
+    fs::path filepath = fs::current_path() / relativefilepath;
+
+    if (filepath.extension() != ".df") {
         cerr << "File is not .df" << endl;
     }
 
-    fstream ProgramFile(filecd);
+    fstream ProgramFile(filepath);
 
-    char ch;
-
-    while (ProgramFile.get(ch)) {
-        cout << ch;
-    }
+    
 
     ProgramFile.close();
 
     return 0;
 }
+

@@ -1,0 +1,29 @@
+Def Loops() {
+    for (i in 3) {
+        Sentmessage(i)<players>;
+    }
+
+    #inf loop
+    for (_ in inf) {
+        If (__player__.health <= 1) {
+            kill(player);
+        }
+        wait();
+    }
+
+    #This loop includes a extra increment block to get i
+    for (i in inf) {
+        Sentmessage("num: " + i);
+        wait(); #Default for wait is 1t (1 tick);
+    }
+
+    for (loc in adjacence(__player__.loc, False, False, Cube)) {
+        
+    }
+
+    list week = ["mon", "tue", "wed", "thu", "fru", "sat", "sun"];
+
+    for (day in week) {
+        Sentmessage(day)<players>;
+    }
+}
