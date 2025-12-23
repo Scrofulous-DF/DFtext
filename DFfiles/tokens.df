@@ -5,6 +5,7 @@ Event
 ]
 {
 }
+.
 ,
 ;
 =
@@ -15,3 +16,5 @@ Event
 >=
 !=
 <default>
+__event__
+__plot__
