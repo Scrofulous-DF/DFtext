@@ -1,4 +1,5 @@
+123
 Event(Join) {
-    #comment#
-    __player__.giveitems(Item(material="diamond_sword"));
+    pass;
+    num num1 = 45;
 }
