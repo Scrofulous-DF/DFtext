@@ -6,7 +6,7 @@ def Event(Join) {
 }
 
 def Setup() {
-    global str text = "Hello World!";
+    global str text = 'Hello World!';
     global num tax = 32.2;
       #note: Can't use double quotes for both stxt and str# 
     local stxt lore = "<grey><i>your worst nightmare";

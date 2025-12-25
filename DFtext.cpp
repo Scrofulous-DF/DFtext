@@ -3,6 +3,7 @@
 #include <fstream>
 #include <filesystem>
 #include <vector>
+#include <unordered_map>
 
 using namespace std;
 namespace fs = filesystem;
@@ -12,6 +13,9 @@ enum TokenType {
     tok_IDENTIFIER,
 
     tok_SEMICOLON,
+    tok_DOT,
+    tok_COMMA,
+    tok_COLON,
 
     tok_OPEN_BRACKET,
     tok_CLOSE_BRACKET,
@@ -20,9 +24,19 @@ enum TokenType {
     tok_OPEN_CURLY,
     tok_CLOSE_CURLY,
 
-    tok_STR,
     tok_NUM,
 };
+
+std::unordered_map<char, TokenType> tokenmap = {
+    {';', tok_SEMICOLON},
+    {'.', tok_DOT},
+    {',', tok_COMMA},
+    {'(', tok_OPEN_BRACKET},
+    {')', tok_CLOSE_BRACKET},
+    {'{', tok_OPEN_CURLY},
+    {'}', tok_CLOSE_CURLY}
+};
+
 
 struct Token {
     TokenType type;
@@ -45,8 +59,6 @@ void lexer(fs::path filepath) {
         if (isdigit(ch)) {
             string number;
 
-            int loop = 1;
-
             while (isdigit(ch)) {
                 number += ch;
                 programfile.get(ch);
@@ -54,10 +66,27 @@ void lexer(fs::path filepath) {
 
             tokens.push_back({tok_NUM, number});
         }
+
+        if (isalpha(ch) || ch == '_') {
+            string identifier;
+
+            while (isalpha(ch) || ch == '_') {
+                identifier += ch;
+                programfile.get(ch);
+            }
+
+            tokens.push_back({tok_IDENTIFIER, identifier});
+        }
+
+        if (tokenmap.count(ch) == 1) {
+            TokenType tokentype = tokenmap[ch];
+            string value(1, ch);
+            tokens.push_back({tokentype, value});
+        }
     }
     
     for (Token token : tokens) {
-        cout << token.type << ":" << token.value << endl;
+        cout << token.type << "|" << token.value << "|" << endl;
     }
 
 }
