@@ -4,6 +4,7 @@
 #include <filesystem>
 #include <vector>
 #include <unordered_map>
+#include <unordered_set>
 
 using namespace std;
 namespace fs = filesystem;
@@ -11,6 +12,7 @@ namespace fs = filesystem;
 enum TokenType {
     tok_EOF = -1,
     tok_IDENTIFIER,
+    tok_ASSIGNMENT,
 
     tok_SEMICOLON,
     tok_DOT,
@@ -18,25 +20,33 @@ enum TokenType {
     tok_COLON,
 
     tok_OPEN_BRACKET,
-    tok_CLOSE_BRACKET,
+    tok_CLOSED_BRACKET,
     tok_OPEN_SQUARE,
-    tok_CLOSE_SQUARE,
+    tok_CLOSED_SQUARE,
     tok_OPEN_CURLY,
-    tok_CLOSE_CURLY,
+    tok_CLOSED_CURLY,
+    tok_OPEN_ANGLE,
+    tok_CLOSED_ANGLE,
 
     tok_NUM,
 };
 
-std::unordered_map<char, TokenType> tokenmap = {
+unordered_map<char, TokenType> tokenmap = {
+    {'=', tok_ASSIGNMENT},
     {';', tok_SEMICOLON},
     {'.', tok_DOT},
     {',', tok_COMMA},
     {'(', tok_OPEN_BRACKET},
-    {')', tok_CLOSE_BRACKET},
+    {')', tok_CLOSED_BRACKET},
+    {'[', tok_OPEN_SQUARE},
+    {']', tok_CLOSED_SQUARE},
     {'{', tok_OPEN_CURLY},
-    {'}', tok_CLOSE_CURLY}
+    {'}', tok_CLOSED_CURLY},
+    {'<', tok_OPEN_ANGLE},
+    {'>', tok_CLOSED_ANGLE},
 };
 
+unordered_set<string> varidentifiers = {"num", "str", "stxt", "loc", "vec", "item", "pot", "par", "list", "dict"};
 
 struct Token {
     TokenType type;
@@ -56,6 +66,14 @@ void lexer(fs::path filepath) {
 
     while (programfile.get(ch)) {
         
+        if (ch == '#') {
+
+            while (ch != '#') {
+                programfile.get(ch);
+            }
+            
+        }
+
         if (isdigit(ch)) {
             string number;
 
@@ -76,6 +94,7 @@ void lexer(fs::path filepath) {
             }
 
             tokens.push_back({tok_IDENTIFIER, identifier});
+            
         }
 
         if (tokenmap.count(ch) == 1) {
