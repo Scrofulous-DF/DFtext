@@ -1,13 +1,16 @@
 #include <iostream>
-#include <string>
+#include <filesystem>
 #include <fstream>
 #include <filesystem>
 #include <vector>
 #include <unordered_map>
 #include <unordered_set>
+#include "json.hpp"
 
 using namespace std;
 namespace fs = filesystem;
+
+#include <string>
 
 enum TokenType {
     tok_EOF = -1,
@@ -31,6 +34,13 @@ enum TokenType {
     tok_NUM,
     tok_STXT,
     tok_STR,
+
+    tok_BOOL,
+};
+
+struct Token {
+    TokenType type;
+    std::string value;
 };
 
 unordered_map<char, TokenType> singulartokens {
@@ -55,12 +65,7 @@ unordered_map<char, TokenType> wraptokens = {
 
 unordered_set<string> varidentifiers = {"num", "str", "stxt", "loc", "vec", "item", "pot", "par", "list", "dict"};
 
-struct Token {
-    TokenType type;
-    string value;
-};
-
-void lexer(fs::path filepath) {
+vector<Token> lexer(fs::path filepath) {
     fstream programfile(filepath);
 
     if (!programfile.is_open()) {
@@ -129,6 +134,10 @@ void lexer(fs::path filepath) {
 
             programfile.unget();
 
+            if (identifier == "True" || identifier == "False") {
+                tokens.push_back({tok_BOOL, identifier});
+            };
+
             tokens.push_back({tok_IDENTIFIER, identifier});
             
             continue;
@@ -140,11 +149,28 @@ void lexer(fs::path filepath) {
             tokens.push_back({tokentype, value});
         }
     }
-    
-    for (Token token : tokens) {
-        cout << token.type << "|" << token.value << "|" << endl;
-    }
 
+    tokens.push_back({tok_EOF, 0});
+
+    return tokens;
+}
+
+nlohmann::json NBTblock() {
+    nlohmann::json j;
+
+    j["id"] = "block";
+    j["block"] = "event";
+
+    cout << j << endl;
+}
+
+void Parser(vector<Token> tokens) {
+
+    NBTblock();
+
+    for (Token token : tokens) {
+        cout << token.type << endl;
+    }
 }
 
 int main(int argc, char* argv[]) {
@@ -162,7 +188,13 @@ int main(int argc, char* argv[]) {
         cerr << "File is not .df" << endl;
     }
 
-    lexer(filepath);
+    vector<Token> tokens = lexer(filepath);
+
+    for (Token token : tokens) {
+        cout << token.type << "|" << token.value << "|" << endl;
+    }
+
+    Parser(tokens);
 
     cout << "completed" << endl;
 

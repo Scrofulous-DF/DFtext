@@ -1,3 +1,5 @@
+# changes between all types that seems possible should be possible #
+
 Event(Join) {
     stxt format = "<red><i>";
     str message = 'Hey';

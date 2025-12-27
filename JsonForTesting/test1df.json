@@ -1,0 +1,133 @@
+{
+    "blocks": [
+        {
+            "id": "block",
+            "block": "event",
+            "args": {
+                "items": []
+            },
+            "action": "Join"
+        },
+        {
+            "id": "block",
+            "block": "set_var",
+            "args": {
+                "items": [
+                    {
+                        "item": {
+                            "id": "var",
+                            "data": {
+                                "name": "format",
+                                "scope": "line"
+                            }
+                        },
+                        "slot": 0
+                    },
+                    {
+                        "item": {
+                            "id": "comp",
+                            "data": {
+                                "name": "<red><i>"
+                            }
+                        },
+                        "slot": 1
+                    }
+                ]
+            },
+            "action": "="
+        },
+        {
+            "id": "block",
+            "block": "set_var",
+            "args": {
+                "items": [
+                    {
+                        "item": {
+                            "id": "var",
+                            "data": {
+                                "name": "message",
+                                "scope": "line"
+                            }
+                        },
+                        "slot": 0
+                    },
+                    {
+                        "item": {
+                            "id": "txt",
+                            "data": {
+                                "name": "Hey"
+                            }
+                        },
+                        "slot": 1
+                    }
+                ]
+            },
+            "action": "="
+        },
+        {
+            "id": "block",
+            "block": "player_action",
+            "args": {
+                "items": [
+                    {
+                        "item": {
+                            "id": "var",
+                            "data": {
+                                "name": "format",
+                                "scope": "line"
+                            }
+                        },
+                        "slot": 0
+                    },
+                    {
+                        "item": {
+                            "id": "var",
+                            "data": {
+                                "name": "message",
+                                "scope": "line"
+                            }
+                        },
+                        "slot": 1
+                    },
+                    {
+                        "item": {
+                            "id": "bl_tag",
+                            "data": {
+                                "option": "True",
+                                "tag": "Inherit Styles",
+                                "action": "SendMessage",
+                                "block": "player_action"
+                            }
+                        },
+                        "slot": 24
+                    },
+                    {
+                        "item": {
+                            "id": "bl_tag",
+                            "data": {
+                                "option": "No spaces",
+                                "tag": "Text Value Merging",
+                                "action": "SendMessage",
+                                "block": "player_action"
+                            }
+                        },
+                        "slot": 25
+                    },
+                    {
+                        "item": {
+                            "id": "bl_tag",
+                            "data": {
+                                "option": "Centered",
+                                "tag": "Alignment Mode",
+                                "action": "SendMessage",
+                                "block": "player_action"
+                            }
+                        },
+                        "slot": 26
+                    }
+                ]
+            },
+            "action": "SendMessage"
+        }
+    ]
+}

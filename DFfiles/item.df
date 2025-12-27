@@ -1,0 +1,28 @@
+func whatever() {
+    item sword = 'wooden_sword';
+    item good_sword = Item(
+        material : 'diamond_sword',
+        count : 3,
+        name : "<red><shadow:#000000ff>DOOM SWORD",
+        maxstacksize : 2,
+        unbreakable : True,
+        placeable : ['dirt', 'grass_block'],
+        breakable : ['cobweb'],
+        consumable : {
+            alwaysedible : True,
+            animation : spyglass,
+            nutrition : 5,
+            saturation : 4,
+            useduration : 20t,
+            sound : #sound here lol#,
+            particles : True
+        },
+        enchants : [
+            sharpness : 255
+            # yk the rest #
+        ],
+        attribute : {# im not gonna do this its bedtime #},
+        glow : True,
+        #more later#
+    );
+}
