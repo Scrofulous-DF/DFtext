@@ -25,7 +25,7 @@
         },
         {
             "label": "Run DF File",
-            "command": ".\\DFtext.exe",
+            "command": ".\\src\\DFtext.exe",
             "type": "shell",
             "args": [
                 "${file}"
