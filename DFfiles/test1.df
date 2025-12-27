@@ -1,19 +1,5 @@
 Event(Join) {
-    num _num = 45;
-    string str = 'num: ' + _num;
-    sentmessage(__event__.blockloc);
-    (#hello#);
-    ##
-    <default>.loc;
-    #
-    fu fu fu
-    chu chu chu
-
-d    #
-    _num++;
+    stxt format = "<red><i>";
+    str message = 'Hey';
+    Sentmessage(format, message, Centered, False, True);
 }
-
-
-
-
-

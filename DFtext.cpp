@@ -29,9 +29,11 @@ enum TokenType {
     tok_CLOSED_ANGLE,
 
     tok_NUM,
+    tok_STXT,
+    tok_STR,
 };
 
-unordered_map<char, TokenType> tokenmap = {
+unordered_map<char, TokenType> singulartokens {
     {'=', tok_ASSIGNMENT},
     {';', tok_SEMICOLON},
     {'.', tok_DOT},
@@ -44,6 +46,11 @@ unordered_map<char, TokenType> tokenmap = {
     {'}', tok_CLOSED_CURLY},
     {'<', tok_OPEN_ANGLE},
     {'>', tok_CLOSED_ANGLE},
+};
+
+unordered_map<char, TokenType> wraptokens = {
+    {'\'', tok_STR},
+    {'"', tok_STXT},
 };
 
 unordered_set<string> varidentifiers = {"num", "str", "stxt", "loc", "vec", "item", "pot", "par", "list", "dict"};
@@ -64,41 +71,71 @@ void lexer(fs::path filepath) {
 
     vector<Token> tokens;
 
+    // two types of loops:
+    // # 1 loops while ch is a type of character(Identifier and number) and needs a putback so it
+    // # 2 loops while ch is not a character
+
     while (programfile.get(ch)) {
         
         if (ch == '#') {
 
+            programfile.get(ch);
+
             while (ch != '#') {
                 programfile.get(ch);
             }
-            
+        }
+
+        if (wraptokens.count(ch) == 1) {
+
+            char wrapch = ch;
+
+            programfile.get(ch);
+
+            string value;
+
+            while (ch != wrapch) {
+                value += ch;
+                programfile.get(ch);
+            }
+
+            TokenType tokentype = wraptokens[wrapch];
+
+            tokens.push_back({tokentype, value});
         }
 
         if (isdigit(ch)) {
             string number;
 
-            while (isdigit(ch)) {
+            do {
                 number += ch;
                 programfile.get(ch);
-            }
+            } while (isdigit(ch));
+
+            programfile.unget();
 
             tokens.push_back({tok_NUM, number});
+
+            continue;
         }
 
         if (isalpha(ch) || ch == '_') {
             string identifier;
 
-            while (isalpha(ch) || ch == '_') {
+            do {
                 identifier += ch;
                 programfile.get(ch);
-            }
+            } while (isalpha(ch) || ch == '_');
+
+            programfile.unget();
 
             tokens.push_back({tok_IDENTIFIER, identifier});
             
+            continue;
         }
 
-        if (tokenmap.count(ch) == 1) {
-            TokenType tokentype = tokenmap[ch];
+        if (singulartokens.count(ch) == 1) {
+            TokenType tokentype = singulartokens[ch];
             string value(1, ch);
             tokens.push_back({tokentype, value});
         }
