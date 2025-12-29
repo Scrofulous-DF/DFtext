@@ -5,12 +5,14 @@
 #include <vector>
 #include <unordered_map>
 #include <unordered_set>
-#include "json.hpp"
+#include <format>
+#include "../include/json.hpp"
+
 
 using namespace std;
 namespace fs = filesystem;
 
-#include <string>
+using json = nlohmann::json;
 
 enum TokenType {
     tok_EOF = -1,
@@ -40,7 +42,7 @@ enum TokenType {
 
 struct Token {
     TokenType type;
-    std::string value;
+    string value;
 };
 
 unordered_map<char, TokenType> singulartokens {
@@ -63,8 +65,6 @@ unordered_map<char, TokenType> wraptokens = {
     {'"', tok_STXT},
 };
 
-unordered_set<string> varidentifiers = {"num", "str", "stxt", "loc", "vec", "item", "pot", "par", "list", "dict"};
-
 vector<Token> lexer(fs::path filepath) {
     fstream programfile(filepath);
 
@@ -82,6 +82,8 @@ vector<Token> lexer(fs::path filepath) {
 
     while (programfile.get(ch)) {
         
+        cout << ch;
+
         if (ch == '#') {
 
             programfile.get(ch);
@@ -97,7 +99,7 @@ vector<Token> lexer(fs::path filepath) {
 
             programfile.get(ch);
 
-            string value;
+            string value = "";
 
             while (ch != wrapch) {
                 value += ch;
@@ -110,7 +112,7 @@ vector<Token> lexer(fs::path filepath) {
         }
 
         if (isdigit(ch)) {
-            string number;
+            string number = "";
 
             do {
                 number += ch;
@@ -125,7 +127,7 @@ vector<Token> lexer(fs::path filepath) {
         }
 
         if (isalpha(ch) || ch == '_') {
-            string identifier;
+            string identifier = "";
 
             do {
                 identifier += ch;
@@ -150,35 +152,32 @@ vector<Token> lexer(fs::path filepath) {
         }
     }
 
-    tokens.push_back({tok_EOF, 0});
+    tokens.push_back({tok_EOF, ""});
 
     return tokens;
 }
 
-nlohmann::json NBTblock() {
-    nlohmann::json j;
 
-    j["id"] = "block";
-    j["block"] = "event";
-
-    cout << j << endl;
-}
 
 void Parser(vector<Token> tokens) {
 
-    NBTblock();
-
     for (Token token : tokens) {
-        cout << token.type << endl;
+        token.type;
     }
 }
 
 int main(int argc, char* argv[]) {
     
+    for (int i = 0; i < argc; i++) {
+        cout << i << endl;
+    }
+
     if (argc < 2) {
         cerr << "Not enought args" << endl;
         return 0;
     }
+
+    cout << argc;
 
     fs::path relativefilepath = argv[1];
 
@@ -188,7 +187,11 @@ int main(int argc, char* argv[]) {
         cerr << "File is not .df" << endl;
     }
 
+    cout << "File passed" << endl;
+
     vector<Token> tokens = lexer(filepath);
+
+    cout << "Lexer passed" << endl;
 
     for (Token token : tokens) {
         cout << token.type << "|" << token.value << "|" << endl;

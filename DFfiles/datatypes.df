@@ -1,3 +1,3 @@
 func datatypes() {
-    
+    "num", "str", "stxt", "loc", "vec", "item", "pot", "par", "list", "dict"
 }
